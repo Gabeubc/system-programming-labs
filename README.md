@@ -37,5 +37,5 @@ write unit tests
 
 ### Lab_02:
 
-<a href="https://github.com/Gabeubc/system-programming-labs/blob/main/Lab_02/Esercitazione%202.pdf" target="blank">Instructions</a>
+<a href="https://github.com/Gabeubc/system-programming-labs/blob/main/Lab_02/Esercitazione%202.pdf" target="_blank">Instructions</a>
 
