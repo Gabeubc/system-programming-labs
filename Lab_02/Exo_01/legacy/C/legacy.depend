@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1680905153 source:c:\users\youbi\desktop\process\polito\laurea-magistrale\first year\programmazione di sistema\programmazione\labs\lab_02\exo_01\legacy\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1681422836 source:c:\users\youbi\desktop\process\polito\laurea-magistrale\first year\programmazione di sistema\programmazione\labs\lab_02\exo_01\legacy\c\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
