@@ -34,3 +34,8 @@ Understand the semantics of passing parameters to functions
 write unit tests
 - Handling arguments passed through the command line
 
+
+### Lab_02:
+
+<a href="https://github.com/Gabeubc/system-programming-labs/blob/main/Lab_02/Esercitazione%202.pdf" target="blank">Instructions</a>
+
