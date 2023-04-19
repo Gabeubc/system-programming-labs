@@ -1,0 +1,22 @@
+[package]
+name = "producer_consumer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand= "0.8"
+bincode = "1.3.3"
+
+[[bin]]
+name = "main"
+path ="src/main.rs"
+
+[[bin]]
+name = "producer"
+path ="src/bin/producer/main.rs"
+
+[[bin]]
+name = "consumer"
+path ="src/bin/consumer/main.rs"
