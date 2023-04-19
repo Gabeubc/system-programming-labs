@@ -10,30 +10,7 @@ In this lab we install the **OS161** operating system and explore it.
 
 #### Set the environment:
 
-Execute the following command to get the OS161 operating system ready on your machine (Linux):
-
-- cd $HOME
-
-- sudo wget https://www.dropbox.com/s/ve16hjptqwrxm3l/os161-kit-mine.tgz (this link is provided by *Politecnico di Torino*)
-
-- tar -zxvf os161-kit-mine.tgz 
-
-tep into os161-kit, if the os161-downloads.tgz folder is not present create a folder a give it os161-downloads as name, step into it and execute the following command: (those link are provided by Harvard University)
-
-- sudo wget http://os161.eecs.harvard.edu/download/binutils-2.24+os161-2.1.tar.gz  
-- sudo wget http://os161.eecs.harvard.edu/download/bmake-20101215.tar.gz           
-- sudo wget http://os161.eecs.harvard.edu/download/gcc-4.8.3+os161-2.1.tar.gz      
-- sudo wget http://os161.eecs.harvard.edu/download/gdb-7.8+os161-2.1.tar.gz
-- sudo wget http://os161.eecs.harvard.edu/download/mk-20100612.tar.gz
-- sudo wget http://os161.eecs.harvard.edu/download/os161-base-2.0.3.tar.gz
-- sudo wget http://os161.eecs.harvard.edu/download/sys161-2.0.8.tar.gz
-
-Now, execute the following command from the OS161-kit folder and you will be ready:
-
-- source os161-env-startup.sh
-- source os161-kit-setup.sh ( if you get errors because of files missing, please read the errors and move the necessary folder )
-- source os161-kit-build.sh
-- source os161-kernel-build.sh
+(to do)
 
 
 
@@ -56,4 +33,9 @@ Understand the semantics of passing parameters to functions
 - Perform function testing, referring to pre-existing tests and knowing how to 
 write unit tests
 - Handling arguments passed through the command line
+
+
+### Lab_02:
+
+<a href="https://github.com/Gabeubc/system-programming-labs/blob/main/Lab_02/Esercitazione%202.pdf" target="_blank">Instructions</a>
 
