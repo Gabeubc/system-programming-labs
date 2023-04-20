@@ -35,7 +35,7 @@ pub timestamp: u32
 
 const CIRCULAR_BUFFER_LEN: usize = 10;
 
-#[derive(Default, Clone, Copy)]
+#[derive(Default, Debug, Clone, Copy)]
 pub struct CircularBufferSensorData{
     index: usize,
     vec_buffer: [SensorData; CIRCULAR_BUFFER_LEN]
@@ -78,7 +78,7 @@ impl CircularBufferSensorData{
     // end write into buffer
 
     // read from buffer
-    pub fn read_from_vec_buffer(&mut self, path:&mut String) -> &mut CircularBufferSensorData{
+    pub fn read_from_vec_buffer(&mut self, path: String) -> &mut CircularBufferSensorData{
 
         let mut file = File::options().read(true).open(&path).unwrap();
         let mut circular_buffer_size = std::mem::size_of::<CircularBufferSensorData>();
@@ -88,6 +88,7 @@ impl CircularBufferSensorData{
                 circular_buffer_size);
                 file.read_exact(slice_u8_from_self).unwrap();
         }
+        println!("{:?}",self);
         self
 
     }
