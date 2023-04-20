@@ -4,11 +4,7 @@ use std::{env::args, time::Duration};
 use sensor::{Sensor, SensorData, CircularBufferSensorDataWrite, NUM_SENSOR_TO_READ};
 
 
-
-
-
-
-
+const TIME_TO_WAIT: u64 = 1;
 
 fn read_sensors(sensor_data: &mut SensorData, sensors:&mut [Sensor; NUM_SENSOR_TO_READ]){
     
@@ -31,7 +27,7 @@ fn main(){
     let mut circularbuffer =CircularBufferSensorDataWrite::default();
     let mut sensor_data: SensorData = SensorData::default();
     let mut sensors: [Sensor; NUM_SENSOR_TO_READ] = Default::default();
-    let mut time_to_wait: Duration = Duration::from_secs(1);
+    let mut time_to_wait: Duration = Duration::from_secs(TIME_TO_WAIT);
 
     while true {
         std::thread::sleep(time_to_wait);
