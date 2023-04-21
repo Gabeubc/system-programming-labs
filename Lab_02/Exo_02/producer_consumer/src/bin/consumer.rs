@@ -4,7 +4,7 @@ use std::{time::Duration};
 
 use sensor::{CircularBufferSensorDataRead};
 
-const TIME_TO_WAIT: u64 = 1;
+const TIME_TO_WAIT: u64 = 10;
 
 fn consume(circular_buffer:&mut CircularBufferSensorDataRead, path: String){
 
@@ -19,6 +19,6 @@ fn main (){
     let time_to_wait : Duration = Duration::from_secs(TIME_TO_WAIT);
     while true{
         std::thread::sleep(time_to_wait);
-        consume(&mut circular_buffer, "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_02/producer_consumer/src/resource/file.bin".to_string());
+        consume(&mut circular_buffer, "./resource/file.bin".to_string());
     }
 }

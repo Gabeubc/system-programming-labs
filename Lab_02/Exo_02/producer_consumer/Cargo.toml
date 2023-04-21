@@ -7,8 +7,8 @@ edition = "2021"
 
 [dependencies]
 rand = "0.8.5"
-
-
+fcntl = "0.1"
+nix = "0.26.2"
 
 [[bin]]
 name ="producer"
@@ -21,5 +21,3 @@ path = "src/bin/consumer.rs"
 [[bin]]
 name ="sensor"
 path = "src/bin/sensor.rs"
-
-

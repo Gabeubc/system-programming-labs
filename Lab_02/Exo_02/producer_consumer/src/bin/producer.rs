@@ -6,6 +6,7 @@ use sensor::{Sensor, SensorData, CircularBufferSensorDataWrite, NUM_SENSOR_TO_RE
 
 const TIME_TO_WAIT: u64 = 1;
 
+
 fn read_sensors(sensor_data: &mut SensorData, sensors:&mut [Sensor; NUM_SENSOR_TO_READ]){
     
     for i in 0..NUM_SENSOR_TO_READ {
@@ -32,7 +33,7 @@ fn main(){
     while true {
         std::thread::sleep(time_to_wait);
         read_sensors(&mut sensor_data, &mut sensors);
-        publish(&mut circularbuffer,&mut sensor_data, "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_02/producer_consumer/src/resource/file.bin".to_string());
+        publish(&mut circularbuffer,&mut sensor_data, "./resource/file.bin".to_string());
     }
     
 }

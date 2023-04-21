@@ -1,1 +1,1 @@
-C:\Users\youbi\Desktop\Process\Polito\Laurea-Magistrale\first\ year\Programmazione\ di\ Sistema\system-programming-labs\Lab_02\Exo_02\producer_consumer\target\debug\producer_consumer.exe: C:\Users\youbi\Desktop\Process\Polito\Laurea-Magistrale\first\ year\Programmazione\ di\ Sistema\system-programming-labs\Lab_02\Exo_02\producer_consumer\src\main.rs
+/home/s309572/producer_consumer/target/debug/producer_consumer: /home/s309572/producer_consumer/src/main.rs
