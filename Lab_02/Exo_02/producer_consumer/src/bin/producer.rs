@@ -10,7 +10,7 @@ const TIME_TO_WAIT: u64 = 1;
 fn read_sensors(sensor_data: &mut SensorData, sensors:&mut [Sensor; NUM_SENSOR_TO_READ]){
     
     for i in 0..NUM_SENSOR_TO_READ {
-        sensor_data.values[i] = sensors.iter().nth(i).unwrap().rand_sensor_data_gen();
+        sensor_data.values[i] = sensors.get(i).unwrap().rand_sensor_data_gen();
     }
 
 }

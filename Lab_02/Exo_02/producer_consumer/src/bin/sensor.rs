@@ -67,13 +67,13 @@ impl CircularBufferSensorDataWrite{
 
         let mut index = self.index;
         if index % CIRCULAR_BUFFER_LEN != 0 && index !=0{
-            self.vec_buffer[index] = some_sensor_data.clone();
+            self.vec_buffer[index] = *some_sensor_data;
             self.vec_buffer[index].seq = index as u32;
             self.index = index + 1;
         } else
         if index % CIRCULAR_BUFFER_LEN == 0{
             index = 0;
-            self.vec_buffer[index] = some_sensor_data.clone();
+            self.vec_buffer[index] = *some_sensor_data;
             self.vec_buffer[index].seq = index as u32;
             self.index = index + 1;
         }
@@ -106,7 +106,7 @@ impl CircularBufferSensorDataWrite{
                 self.push_into_vec_buffer(some_sensor_data);
                 let mut slice_u8_from_self: &mut [u8] = std::slice::from_raw_parts_mut(self as *mut CircularBufferSensorDataWrite as *mut u8,
                     circular_buffer_size);
-                    file.write(&slice_u8_from_self).unwrap();
+                    file.write_all(slice_u8_from_self).unwrap();
             }
             ,
             
@@ -174,10 +174,6 @@ impl CircularBufferSensorDataRead{
                     }
                 }
                 println!("{:?}",self);
-               /* circular_buffer_size = std::mem::size_of::<CircularBufferSensorData>();
-                slice_u8_from_self = std::slice::from_raw_parts_mut(self as *mut CircularBufferSensorData as *mut u8,
-                    circular_buffer_size);
-                file.read_exact(slice_u8_from_self).unwrap();*/
         },
         
         Ok(true) => println!("Can't perform read because lock is busy"),
