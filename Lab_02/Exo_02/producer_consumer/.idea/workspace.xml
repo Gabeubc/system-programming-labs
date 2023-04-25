@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1df14233-3bf2-4d0b-b280-fd0deac960ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/bincode-dff8adc19050a6cc/dep-lib-bincode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/bincode-dff8adc19050a6cc/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/bincode-dff8adc19050a6cc/lib-bincode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/bincode-dff8adc19050a6cc/lib-bincode.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-af40f2c9a58ae546/build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-af40f2c9a58ae546/build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-af40f2c9a58ae546/dep-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-af40f2c9a58ae546/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-b50ed3312638ea68/dep-lib-proc-macro2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-b50ed3312638ea68/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-b50ed3312638ea68/lib-proc-macro2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-b50ed3312638ea68/lib-proc-macro2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-c46d30a457053b59/run-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/proc-macro2-c46d30a457053b59/run-build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-018314b91ee50bb4/bin-main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-018314b91ee50bb4/bin-main.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-018314b91ee50bb4/dep-bin-main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-018314b91ee50bb4/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-18f4b6b3a844e31c/bin-consumer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-18f4b6b3a844e31c/bin-consumer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-18f4b6b3a844e31c/dep-bin-consumer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-18f4b6b3a844e31c/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-32f88ccbf4076128/dep-test-bin-consumer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-32f88ccbf4076128/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-32f88ccbf4076128/test-bin-consumer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-32f88ccbf4076128/test-bin-consumer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-436b95101c0b94b7/dep-test-bin-main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-436b95101c0b94b7/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-436b95101c0b94b7/test-bin-main" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-436b95101c0b94b7/test-bin-main.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-446fa1ce868198d9/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-cdd7a2b8f86de1e3/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-da127ca1bb71e69a/output-bin-producer" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/producer_consumer-da127ca1bb71e69a/output-bin-producer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-06dcaebd06f66381/run-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-06dcaebd06f66381/run-build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-b427138fb62afac0/dep-lib-quote" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-b427138fb62afac0/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-b427138fb62afac0/lib-quote" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-b427138fb62afac0/lib-quote.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-c92c9a10c5e4b753/build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-c92c9a10c5e4b753/build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-c92c9a10c5e4b753/dep-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/quote-c92c9a10c5e4b753/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-4edced58bc21d1e5/build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-4edced58bc21d1e5/build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-4edced58bc21d1e5/dep-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-4edced58bc21d1e5/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-97d78a4de403487d/dep-lib-serde" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-97d78a4de403487d/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-97d78a4de403487d/lib-serde" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-97d78a4de403487d/lib-serde.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-c543cf8ae78c15dc/run-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde-c543cf8ae78c15dc/run-build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-0a33af735a808082/run-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-0a33af735a808082/run-build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-55cb78b8bae38fee/build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-55cb78b8bae38fee/build-script-build-script-build.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-55cb78b8bae38fee/dep-build-script-build-script-build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-55cb78b8bae38fee/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-ac4e1c5ca8c30d34/dep-lib-serde_derive" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-ac4e1c5ca8c30d34/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-ac4e1c5ca8c30d34/lib-serde_derive" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/serde_derive-ac4e1c5ca8c30d34/lib-serde_derive.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/syn-636fca46efce3a2b/dep-lib-syn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/syn-636fca46efce3a2b/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/syn-636fca46efce3a2b/lib-syn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/syn-636fca46efce3a2b/lib-syn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/unicode-ident-2d9ee50a21c2806a/dep-lib-unicode-ident" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/unicode-ident-2d9ee50a21c2806a/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/unicode-ident-2d9ee50a21c2806a/lib-unicode-ident" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/.fingerprint/unicode-ident-2d9ee50a21c2806a/lib-unicode-ident.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-af40f2c9a58ae546/build-script-build.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-af40f2c9a58ae546/build_script_build-af40f2c9a58ae546.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-af40f2c9a58ae546/build_script_build-af40f2c9a58ae546.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-af40f2c9a58ae546/build_script_build-af40f2c9a58ae546.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-af40f2c9a58ae546/build_script_build.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-c46d30a457053b59/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-c46d30a457053b59/output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-c46d30a457053b59/root-output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/proc-macro2-c46d30a457053b59/stderr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-06dcaebd06f66381/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-06dcaebd06f66381/output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-06dcaebd06f66381/root-output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-06dcaebd06f66381/stderr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-c92c9a10c5e4b753/build-script-build.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-c92c9a10c5e4b753/build_script_build-c92c9a10c5e4b753.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-c92c9a10c5e4b753/build_script_build-c92c9a10c5e4b753.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-c92c9a10c5e4b753/build_script_build-c92c9a10c5e4b753.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/quote-c92c9a10c5e4b753/build_script_build.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-4edced58bc21d1e5/build-script-build.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-4edced58bc21d1e5/build_script_build-4edced58bc21d1e5.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-4edced58bc21d1e5/build_script_build-4edced58bc21d1e5.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-4edced58bc21d1e5/build_script_build-4edced58bc21d1e5.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-4edced58bc21d1e5/build_script_build.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-c543cf8ae78c15dc/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-c543cf8ae78c15dc/output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-c543cf8ae78c15dc/root-output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-c543cf8ae78c15dc/stderr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build-script-build.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build-script-build.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build_script_build-de66db8bbef99334.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build_script_build-de66db8bbef99334.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build_script_build-de66db8bbef99334.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build_script_build-de66db8bbef99334.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build_script_build.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde-de66db8bbef99334/build_script_build.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-0a33af735a808082/invoked.timestamp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-0a33af735a808082/output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-0a33af735a808082/root-output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-0a33af735a808082/stderr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-55cb78b8bae38fee/build-script-build.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-55cb78b8bae38fee/build_script_build-55cb78b8bae38fee.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-55cb78b8bae38fee/build_script_build-55cb78b8bae38fee.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-55cb78b8bae38fee/build_script_build-55cb78b8bae38fee.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/build/serde_derive-55cb78b8bae38fee/build_script_build.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/consumer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/consumer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/consumer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/consumer.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/bincode-dff8adc19050a6cc.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/consumer-18f4b6b3a844e31c.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/consumer-32f88ccbf4076128.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/consumer.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/consumer.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/consumer.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/consumer.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libbincode-dff8adc19050a6cc.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libconsumer-18f4b6b3a844e31c.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libconsumer-32f88ccbf4076128.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libmain-018314b91ee50bb4.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libmain-436b95101c0b94b7.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libproc_macro2-b50ed3312638ea68.rlib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libproc_macro2-b50ed3312638ea68.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libquote-b427138fb62afac0.rlib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libquote-b427138fb62afac0.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libserde-97d78a4de403487d.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libsyn-636fca46efce3a2b.rlib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libsyn-636fca46efce3a2b.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libunicode_ident-2d9ee50a21c2806a.rlib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/libunicode_ident-2d9ee50a21c2806a.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/main-018314b91ee50bb4.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/main-436b95101c0b94b7.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/main.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/main.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/proc_macro2-b50ed3312638ea68.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/quote-b427138fb62afac0.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/rmetaBB51M8/lib.rmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/serde-97d78a4de403487d.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/serde_derive-ac4e1c5ca8c30d34.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/serde_derive-ac4e1c5ca8c30d34.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/serde_derive-ac4e1c5ca8c30d34.dll.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/serde_derive-ac4e1c5ca8c30d34.dll.lib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/serde_derive-ac4e1c5ca8c30d34.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/syn-636fca46efce3a2b.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/deps/unicode_ident-2d9ee50a21c2806a.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-10pbo0stmjwmy/s-gk74lbbg1l-1mbev2l-1cnoj3b1u84m7/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-10pbo0stmjwmy/s-gk74lbbg1l-1mbev2l-1cnoj3b1u84m7/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-10pbo0stmjwmy/s-gk74lbbg1l-1mbev2l-1cnoj3b1u84m7/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-10pbo0stmjwmy/s-gk74lbbg1l-1mbev2l.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-12catpv68tw01/s-gk74sofxct-w82w0w-bu0rthxmlbw/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-12catpv68tw01/s-gk74sofxct-w82w0w-bu0rthxmlbw/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-12catpv68tw01/s-gk74sofxct-w82w0w-bu0rthxmlbw/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-12catpv68tw01/s-gk74sofxct-w82w0w.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-2f2vrrp0qfagw/s-gk74sofx7a-7g27a8-k8nebki0k0hh/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-2f2vrrp0qfagw/s-gk74sofx7a-7g27a8-k8nebki0k0hh/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-2f2vrrp0qfagw/s-gk74sofx7a-7g27a8-k8nebki0k0hh/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-2f2vrrp0qfagw/s-gk74sofx7a-7g27a8.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-su8tw8yf36d3/s-gk74lbbo88-1nmzp4z-30yjykipippb5/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-su8tw8yf36d3/s-gk74lbbo88-1nmzp4z-30yjykipippb5/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-su8tw8yf36d3/s-gk74lbbo88-1nmzp4z-30yjykipippb5/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-su8tw8yf36d3/s-gk74lbbo88-1nmzp4z.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/1cfglzb36gx53356.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/1zqd0qsk1dcfb6rb.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/20uf7x1b5gk7h59w.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/2dycvhgnqgm3dqt4.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/3woqqmbq7top5dz1.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/4nl4pioz9mwn6imw.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/4rq8wc9t5yntpgs1.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6-337t4eme4tpsp/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/consumer-w2ys1r6v9qke/s-gk74n0hwkt-4xzlu6.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-29oemd0oscvsf/s-gk74lbbphy-1wx7kla-237lfwsidj61z/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-29oemd0oscvsf/s-gk74lbbphy-1wx7kla-237lfwsidj61z/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-29oemd0oscvsf/s-gk74lbbphy-1wx7kla-237lfwsidj61z/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-29oemd0oscvsf/s-gk74lbbphy-1wx7kla.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/1tr8qhrdbpb2ppu4.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/2bppo9zb0kfkgiv8.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/3605cugotf4nmtdt.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/3h4chvusj37mwv49.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/nmc6r1bi6h8uhb6.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse-4dgzpwex6kf6/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3am4dj0wtusvh/s-gk74n0hyz8-14gdyse.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3vzothx1izw6t/s-gk757jsl35-1nt0o9e-vkd1otj2jino/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3vzothx1izw6t/s-gk757jsl35-1nt0o9e-vkd1otj2jino/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3vzothx1izw6t/s-gk757jsl35-1nt0o9e-vkd1otj2jino/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-3vzothx1izw6t/s-gk757jsl35-1nt0o9e.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-t2z4fc6ir0xz/s-gk74lbende-1in4f34-2mz2cckbmqhuo/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-t2z4fc6ir0xz/s-gk74lbende-1in4f34-2mz2cckbmqhuo/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-t2z4fc6ir0xz/s-gk74lbende-1in4f34-2mz2cckbmqhuo/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-t2z4fc6ir0xz/s-gk74lbende-1in4f34.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-tqxz1vrxapc4/s-gk757jz1ca-1jy8ccx-1uqsy0kudg8g0/dep-graph.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-tqxz1vrxapc4/s-gk757jz1ca-1jy8ccx-1uqsy0kudg8g0/query-cache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-tqxz1vrxapc4/s-gk757jz1ca-1jy8ccx-1uqsy0kudg8g0/work-products.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/main-tqxz1vrxapc4/s-gk757jz1ca-1jy8ccx.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/producer-1uvhju34qncbh/s-gk74nhfxac-1g4nddi.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/producer-2aym8r7xgqtg0/s-gk74nhg12g-1mpt8mo.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/producer-2ows3jw9r2fci/s-gk74wl6c46-1ffjk2q.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/producer-2ows3jw9r2fci/s-gk75w2jkfj-p1h1qu.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/producer-2rdtrdgze21cw/s-gk75w2idti-rczlqa.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/incremental/producer-4pxlqgsfqxr5/s-gk74n0hwjy-nv9x1u.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/main.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/main.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../producer_consumer/target/debug/main.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../producer_consumer/target/debug/main.pdb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="1li1dzrs" />
+  </component>
+  <component name="ProjectId" id="2OgysuCEzuB82v17E7kObBf86P7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_02/prdoducer_consumer_copy",
+    "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\youbi\Desktop\Process\Polito\Laurea-Magistrale\first year\Programmazione di Sistema\system-programming-labs\Lab_02\Exo_02\prdoducer_consumer_copy\src\bin" />
+      <recent name="C:\Users\youbi\Desktop\Process\Polito\Laurea-Magistrale\first year\Programmazione di Sistema\system-programming-labs\Lab_02\Exo_02\prdoducer_consumer_copy\src\bin\object" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="command" value="run" />
+      <option name="emulateTerminal" value="false" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <envs />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1df14233-3bf2-4d0b-b280-fd0deac960ee" name="Changes" comment="" />
+      <created>1681996731397</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681996731397</updated>
+    </task>
+    <servers />
+  </component>
+</project>
