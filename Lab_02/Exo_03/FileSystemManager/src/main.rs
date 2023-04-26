@@ -59,7 +59,7 @@ impl FileSystem{
         let mut dir = Dir::default();
         let mut file = File::default();
 
-        //should i had a termiation condition or the end of the for cycle is enough? 
+        //should i had a termiation condition or the end *of the iterator is enough? 
         // continue....
         for node in read_dir(path).unwrap(){
 
