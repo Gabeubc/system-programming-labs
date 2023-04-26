@@ -48,9 +48,28 @@ impl FileSystem{
 
     fn get_name_from_path(path: &str) -> String{
 
-        let mut names: Vec<&str>= path.split('/').collect();
+        let mut tmp = String::default();
+        tmp = match path.contains('/') {
 
-        names.get(names.len() - 1).unwrap().to_string()
+            true => {
+                 path.split('/').collect::<Vec<&str>>().last().unwrap().to_string()
+            },
+
+            _ => {
+                for c in path.chars(){
+                    if c != '\\' {
+                        tmp.push(c)
+                    }
+                    else {
+                        break
+                    }
+                }
+                tmp
+            }
+            
+        };
+      //  let mut names: Vec<&str>= path.split('/').collect();
+        tmp
 
     }
 
@@ -65,7 +84,7 @@ impl FileSystem{
 
             // if dir go call recursive func
             if node.as_ref().unwrap().file_type().unwrap().is_dir(){
-            dir.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
+            dir.name = FileSystem::get_name_from_path(node.as_ref().unwrap().file_name().to_str().unwrap());
             dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
             FileSystem::from_dir_recursive(
                 node.as_ref().unwrap().path().to_str().unwrap(),
@@ -116,5 +135,5 @@ impl FileSystem{
 
 
 fn main() {
-    println!("Hello, world!");
+    FileSystem::from_dir("C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/test_folder");
 }
