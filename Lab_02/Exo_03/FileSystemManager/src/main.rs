@@ -59,10 +59,11 @@ impl FileSystem{
         let mut dir = Dir::default();
         let mut file = File::default();
 
-        //should i had a termiation condition or the end *of the iterator is enough? 
+        //should i had a termiation condition or the for is enough? 
         // continue....
         for node in read_dir(path).unwrap(){
 
+            // if dir go call recursive func
             if node.as_ref().unwrap().file_type().unwrap().is_dir(){
             dir.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
             dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
@@ -71,10 +72,11 @@ impl FileSystem{
                  &mut dir.children);
             vec_node.push(Node::Dir(Dir::default()));
         }else{
-            
+            // be sure that is a file
             if node.as_ref().unwrap().file_type().unwrap().is_file(){
                 file.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
                 file.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
+                // do action depend of the type of file
                 match node.as_ref().unwrap().path().extension().unwrap().to_str().unwrap() {
 
                   "txt" => file.type_= FileType::Text,
@@ -102,11 +104,7 @@ impl FileSystem{
 
             file_system.root.name =  FileSystem::get_name_from_path(path);
             file_system.root.creation_time = metada.creation_time();
-
-        }
-
-        for entry in read_dir(path).unwrap(){
-
+            FileSystem::from_dir_recursive(path, &mut file_system.root.children);
 
         }
 
