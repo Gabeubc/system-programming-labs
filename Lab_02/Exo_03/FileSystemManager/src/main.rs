@@ -46,34 +46,34 @@ impl FileSystem{
 
     }
 
-    fn get_name_from_path(path: &str) -> String{
+    fn get_name_from_path(path: &str, result: &mut String) -> (){
 
-        let mut tmp = String::default();
-        tmp = match path.contains('/') {
+        match path.contains('/') {
 
             true => {
-                 path.split('/').collect::<Vec<&str>>().last().unwrap().to_string()
+                 for c in path.split('/').collect::<Vec<&str>>().last().unwrap().to_string().chars(){
+                    result.push(c)
+                 };
             },
 
             _ => {
                 for c in path.chars(){
                     if c != '\\' {
-                        tmp.push(c)
+                        result.push(c)
                     }
                     else {
                         break
                     }
                 }
-                tmp
             }
             
         };
       //  let mut names: Vec<&str>= path.split('/').collect();
-        tmp
-
     }
+    
+    fn read_content_of_file() -> (){}
 
-    fn from_dir_recursive<'a>(path: &str, vec_node: &mut Vec<Node>) -> (){
+    fn from_dir_recursive<'a>(path: &str, vec_node: &'a mut Vec<Node>) -> (){
 
         let mut dir = Dir::default();
         let mut file = File::default();
@@ -84,12 +84,12 @@ impl FileSystem{
 
             // if dir go call recursive func
             if node.as_ref().unwrap().file_type().unwrap().is_dir(){
-            dir.name = FileSystem::get_name_from_path(node.as_ref().unwrap().file_name().to_str().unwrap());
-            dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
-            FileSystem::from_dir_recursive(
-                node.as_ref().unwrap().path().to_str().unwrap(),
-                 &mut dir.children);
-            vec_node.push(Node::Dir(Dir::default()));
+                FileSystem::get_name_from_path(node.as_ref().unwrap().file_name().to_str().unwrap(), &mut dir.name);
+                dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
+                FileSystem::from_dir_recursive(
+                    node.as_ref().unwrap().path().to_str().unwrap(),
+                &mut dir.children);
+                vec_node.push(Node::Dir(dir));
         }else{
             // be sure that is a file
             if node.as_ref().unwrap().file_type().unwrap().is_file(){
@@ -102,7 +102,8 @@ impl FileSystem{
                   "bin" => file.type_= FileType::Binary,
                   _ => println!("file type is not handled")
 
-                } 
+                }
+                vec_node.push(Node::File(file)); 
             }
 
         }
@@ -121,7 +122,7 @@ impl FileSystem{
 
         if metada.is_dir(){
 
-            file_system.root.name =  FileSystem::get_name_from_path(path);
+             FileSystem::get_name_from_path(path, &mut file_system.root.name);
             file_system.root.creation_time = metada.creation_time();
             FileSystem::from_dir_recursive(path, &mut file_system.root.children);
 
