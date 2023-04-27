@@ -1,7 +1,7 @@
-use std::{os::windows::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}, io::{BufReader, Read}};
+use std::{os::unix::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}, io::{BufReader, Read}};
 
 
-
+#[derive(Debug)]
 enum FileType {
  Text, 
  Binary
@@ -13,7 +13,7 @@ impl Default for FileType{
     }
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 struct File {
  name: String,
  content: Vec<u8>, // max 1000 bytes, rest of the file truncated
@@ -21,18 +21,18 @@ struct File {
  type_: FileType,
 }
 
-#[derive(Default)]
+#[derive(Default, Debug)]
 struct Dir {
  name: String,
  creation_time: u64,
  children: Vec<Node>,
 }
-
+#[derive(Debug)]
 enum Node {
  File(File),
  Dir(Dir),
 }
-
+#[derive(Debug)]
 struct FileSystem {
  root: Dir
 } 
@@ -74,7 +74,7 @@ impl FileSystem{
             // if dir go call recursive func
             if node.as_ref().unwrap().file_type().unwrap().is_dir(){
                 dir.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
-                dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
+                dir.creation_time = node.as_ref().unwrap().metadata().unwrap().mtime() as  u64;
                 FileSystem::from_dir_recursive(
                     node.as_ref().unwrap().path().to_str().unwrap(),
                 &mut dir.children);
@@ -83,7 +83,7 @@ impl FileSystem{
             // be sure that is a file
             if node.as_ref().unwrap().file_type().unwrap().is_file(){
                 file.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
-                file.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
+                file.creation_time = node.as_ref().unwrap().metadata().unwrap().mtime() as u64;
                 FileSystem::read_content_of_file(&mut file.content, node.as_ref().unwrap().path().to_str().unwrap());
                 // do action depend of the type of file
                 match node.as_ref().unwrap().path().extension().unwrap().to_str().unwrap() {
@@ -113,7 +113,7 @@ impl FileSystem{
         if metada.is_dir(){
 
             file_system.root.name = Path::new(path).file_name().unwrap().to_str().unwrap().to_string();
-            file_system.root.creation_time = metada.creation_time();
+            file_system.root.creation_time = metada.mtime() as u64;
             FileSystem::from_dir_recursive(path, &mut file_system.root.children);
 
         }
@@ -126,5 +126,6 @@ impl FileSystem{
 
 
 fn main() {
-    FileSystem::from_dir("C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/test_folder");
+  let file_system =  FileSystem::from_dir("./resources/parent_folder");
+  println!("{:?}", file_system);
 }
