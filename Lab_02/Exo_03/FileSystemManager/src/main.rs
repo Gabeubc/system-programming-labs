@@ -1,4 +1,4 @@
-use std::{os::windows::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}};
+use std::{os::windows::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}, io::{BufReader, Read}};
 
 
 
@@ -45,46 +45,35 @@ impl FileSystem{
         FileSystem { root: Dir::default() }
 
     }
+    
+    fn read_content_of_file(content: &mut Vec<u8>, path: &str) -> (){
 
-    fn get_name_from_path(path: &str, result: &mut String) -> (){
-
-        match path.contains('/') {
-
-            true => {
-                 for c in path.split('/').collect::<Vec<&str>>().last().unwrap().to_string().chars(){
-                    result.push(c)
-                 };
-            },
-
-            _ => {
-                for c in path.chars(){
-                    if c != '\\' {
-                        result.push(c)
-                    }
-                    else {
-                        break
-                    }
-                }
+        let mut file = std::fs::File::options().read(true).open(path).unwrap();
+        let mut buf: &mut [u8];
+        let mut tmp = u8::default();
+        for i in 0..100{
+            unsafe{
+                buf = std::slice::from_raw_parts_mut(&mut tmp, 
+                    std::mem::size_of::<[u8;100]>());
+                file.read_exact(buf);
+                content.push(buf[0]);
             }
             
-        };
-      //  let mut names: Vec<&str>= path.split('/').collect();
+        }
+
     }
-    
-    fn read_content_of_file() -> (){}
 
     fn from_dir_recursive<'a>(path: &str, vec_node: &'a mut Vec<Node>) -> (){
-
-        let mut dir = Dir::default();
-        let mut file = File::default();
 
         //should i had a termiation condition or the for is enough? 
         // continue....
         for node in read_dir(path).unwrap(){
-
+            
+        let mut dir = Dir::default();
+        let mut file = File::default();
             // if dir go call recursive func
             if node.as_ref().unwrap().file_type().unwrap().is_dir(){
-                FileSystem::get_name_from_path(node.as_ref().unwrap().file_name().to_str().unwrap(), &mut dir.name);
+                dir.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
                 dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
                 FileSystem::from_dir_recursive(
                     node.as_ref().unwrap().path().to_str().unwrap(),
@@ -95,6 +84,7 @@ impl FileSystem{
             if node.as_ref().unwrap().file_type().unwrap().is_file(){
                 file.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
                 file.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
+                FileSystem::read_content_of_file(&mut file.content, node.as_ref().unwrap().path().to_str().unwrap());
                 // do action depend of the type of file
                 match node.as_ref().unwrap().path().extension().unwrap().to_str().unwrap() {
 
@@ -122,7 +112,7 @@ impl FileSystem{
 
         if metada.is_dir(){
 
-             FileSystem::get_name_from_path(path, &mut file_system.root.name);
+            file_system.root.name = Path::new(path).file_name().unwrap().to_str().unwrap().to_string();
             file_system.root.creation_time = metada.creation_time();
             FileSystem::from_dir_recursive(path, &mut file_system.root.children);
 
