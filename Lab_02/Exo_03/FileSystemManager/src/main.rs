@@ -1,4 +1,5 @@
-use std::{os::unix::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}, io::{BufReader, Read}};
+use core::fmt;
+use std::{os::windows::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}, io::{BufReader, Read}, fmt::Debug};
 
 
 #[derive(Debug)]
@@ -20,6 +21,9 @@ struct File {
  creation_time: u64,
  type_: FileType,
 }
+
+
+
 
 #[derive(Default, Debug)]
 struct Dir {
@@ -49,15 +53,34 @@ impl FileSystem{
     fn read_content_of_file(content: &mut Vec<u8>, path: &str) -> (){
 
         let mut file = std::fs::File::options().read(true).open(path).unwrap();
-        let mut buf: &mut [u8];
+        let mut buf: &mut [u8] = Default::default();
         let mut tmp = u8::default();
-        for i in 0..100{
+        let mut tmp_vec= ['c' as u8; 100];
+        let mut file_size = std::fs::metadata(path).unwrap().file_size();
+        if file_size < 100{
             unsafe{
-                buf = std::slice::from_raw_parts_mut(&mut tmp, 
-                    std::mem::size_of::<[u8;100]>());
-                file.read_exact(buf);
-                content.push(buf[0]);
+                unsafe{
+                    buf = std::slice::from_raw_parts_mut(tmp_vec.as_mut_ptr(), 
+                        file_size as usize);
+                    file.read_exact(buf).unwrap();
+                    for c in tmp_vec.iter(){
+                        content.push(*c)
+                    }
+                }
             }
+        }
+        else{
+
+                
+            for i in 0..100{
+                unsafe{
+                    buf = std::slice::from_raw_parts_mut(&mut tmp, 
+                        std::mem::size_of::<u8>());
+                    file.read_exact(buf).unwrap();
+                    content.push(tmp);
+                }
+            
+        }
             
         }
 
@@ -74,7 +97,7 @@ impl FileSystem{
             // if dir go call recursive func
             if node.as_ref().unwrap().file_type().unwrap().is_dir(){
                 dir.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
-                dir.creation_time = node.as_ref().unwrap().metadata().unwrap().mtime() as  u64;
+                dir.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time();
                 FileSystem::from_dir_recursive(
                     node.as_ref().unwrap().path().to_str().unwrap(),
                 &mut dir.children);
@@ -83,7 +106,7 @@ impl FileSystem{
             // be sure that is a file
             if node.as_ref().unwrap().file_type().unwrap().is_file(){
                 file.name = node.as_ref().unwrap().file_name().to_str().unwrap().to_string();
-                file.creation_time = node.as_ref().unwrap().metadata().unwrap().mtime() as u64;
+                file.creation_time = node.as_ref().unwrap().metadata().unwrap().creation_time() ;
                 FileSystem::read_content_of_file(&mut file.content, node.as_ref().unwrap().path().to_str().unwrap());
                 // do action depend of the type of file
                 match node.as_ref().unwrap().path().extension().unwrap().to_str().unwrap() {
@@ -113,7 +136,7 @@ impl FileSystem{
         if metada.is_dir(){
 
             file_system.root.name = Path::new(path).file_name().unwrap().to_str().unwrap().to_string();
-            file_system.root.creation_time = metada.mtime() as u64;
+            file_system.root.creation_time = metada.creation_time() ;
             FileSystem::from_dir_recursive(path, &mut file_system.root.children);
 
         }
@@ -126,6 +149,6 @@ impl FileSystem{
 
 
 fn main() {
-  let file_system =  FileSystem::from_dir("./resources/parent_folder");
+  let file_system =  FileSystem::from_dir("C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/parent_folder");
   println!("{:?}", file_system);
 }
