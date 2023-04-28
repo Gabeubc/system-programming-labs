@@ -1,5 +1,5 @@
-use core::fmt;
-use std::{os::windows::prelude::MetadataExt, fs::ReadDir, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut}, io::{BufReader, Read}, fmt::Debug};
+use core::{fmt, panic};
+use std::{os::windows::prelude::MetadataExt, fs::{ReadDir, DirBuilder}, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut, Add}, io::{BufReader, Read}, fmt::Debug};
 
 
 #[derive(Debug)]
@@ -145,10 +145,41 @@ impl FileSystem{
 
     }
 
+    fn mk_dir (path: &str) -> Dir{
+
+        let mut dir = Dir::default();
+        let mut dir_builder = DirBuilder::new().create(path);
+        let mut tmp_path = String::default();
+        match dir_builder{
+            Ok(ok) => {
+                dir.name = path.split('/').last().unwrap().to_string();
+                dir.creation_time = u64::default();
+            },
+            Err(err) => {
+                let mut vec_node_path: Vec<&str> = path.split('/').collect();
+                vec_node_path.iter().for_each(|x|
+                {   
+                    tmp_path.push_str(x);
+                    println!("{}",tmp_path);
+                    match Path::new(tmp_path.as_str()).is_dir() {
+                        true => print!(""),
+                        false => panic!("{} is an invalid path", tmp_path)
+                        
+                    }
+                    tmp_path.push('/');
+                }
+            );
+            }
+        } 
+        dir
+    }
+
 }
 
 
 fn main() {
-  let file_system =  FileSystem::from_dir("C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/parent_folder");
+  let path = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/parent_folder";
+  let file_system =  FileSystem::from_dir(path);
   println!("{:?}", file_system);
+  FileSystem::mk_dir("C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/parent_folder/gg");
 }
