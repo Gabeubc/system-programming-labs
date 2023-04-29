@@ -1,5 +1,5 @@
 use core::{fmt, panic};
-use std::{os::windows::prelude::MetadataExt, fs::{ReadDir, DirBuilder}, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut, Add}, io::{BufReader, Read}, fmt::Debug};
+use std::{os::windows::prelude::MetadataExt, fs::{ReadDir, DirBuilder}, path::Path, fs::{self, DirEntry, read_dir}, ops::{Deref, DerefMut, Add}, io::{BufReader, Read}, fmt::Debug, any::type_name, slice::Iter};
 
 
 #[derive(Debug)]
@@ -174,6 +174,81 @@ impl FileSystem{
         dir
     }
 
+    // search root
+    fn check_for_valid_path (child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, result:&mut bool) -> (){
+        let mut copy = child_iter.clone();
+        let mut cursor: usize = 0;
+        for node in child_iter{
+            match node {
+    
+                Node::Dir(d) => {
+                    if d.name != node_path.get(0).unwrap().to_string(){
+                        FileSystem::check_for_valid_path(&mut d.children.iter(), node_path, result);
+                    } else {
+                        cursor = 1;
+                        FileSystem::is_valid_path_recursive(&mut d.children.iter(), node_path, &mut cursor , result);
+                    }
+                },
+                Node::File(f) => {
+                    //FileSystem::check_for_valid_path(&mut copy, node_path, result);
+                }
+                
+            }
+        } 
+    }
+
+    //since root is know, check path
+    fn is_valid_path_recursive(child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, cursor:&mut usize, result: &mut bool) -> (){
+
+        let mut copy = child_iter.clone();
+        for node in child_iter{
+            match node {
+    
+                Node::Dir(d) => {
+                    if *cursor < node_path.len(){
+                    if d.name != node_path.get(*cursor).unwrap().to_string(){
+                        *result  = false;
+                } else {
+                        *cursor += 1;
+                        *result = true;
+                        FileSystem::is_valid_path_recursive(&mut d.children.iter(), node_path, cursor, result);
+            }
+                    }
+            },
+                Node::File(f) => {
+                    //FileSystem::is_valid_path_recursive(&mut copy, node_path, cursor, result);
+                }
+                
+            }    
+
+        }
+        
+    }
+
+    fn is_path_valid(&self, path: &str) -> bool{
+
+        let mut node_path: Vec::<&str> = path.split('/').collect();
+        let mut result = false;
+        let mut cursor: usize = 0;
+        if node_path.get(0).unwrap().to_string() == self.root.name{
+            cursor = 1;
+            FileSystem::is_valid_path_recursive(&mut self.root.children.iter(), &mut node_path, &mut cursor, &mut result);
+        } else{
+            FileSystem::check_for_valid_path(&mut self.root.children.iter(), &mut node_path, &mut result);
+        }
+
+        return result;
+    }
+    
+    fn rm_dir_recursive(node: Node) -> (){
+
+    }
+
+    fn rm_dfir(&mut self, path: &str ) -> (){
+
+        
+    }
+
 }
 
 
@@ -181,5 +256,7 @@ fn main() {
   let path = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/parent_folder";
   let file_system =  FileSystem::from_dir(path);
   println!("{:?}", file_system);
-  FileSystem::mk_dir("C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/parent_folder/gg");
+  let result = file_system.is_path_valid("child_folder/child_of_child_folder/ko");
+  println!("{}",result);
+  //FileSystem::mk_dir();
 }
