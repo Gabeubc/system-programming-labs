@@ -178,6 +178,7 @@ impl FileSystem{
     fn check_for_valid_path (child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, result:&mut bool) -> (){
         let mut copy = child_iter.clone();
         let mut cursor: usize = 0;
+        let mut deep: usize = 0;
         for node in child_iter{
             match node {
     
@@ -186,11 +187,14 @@ impl FileSystem{
                         FileSystem::check_for_valid_path(&mut d.children.iter(), node_path, result);
                     } else {
                         cursor = 1;
-                        FileSystem::is_valid_path_recursive(&mut d.children.iter(), node_path, &mut cursor , result);
+                        deep = 1;
+                        FileSystem::is_valid_path_recursive(&mut d.children.iter(), node_path, &mut cursor , result, &mut deep);
+                        if deep < cursor {
+                            *result = false;
+                        }
                     }
                 },
                 Node::File(f) => {
-                    //FileSystem::check_for_valid_path(&mut copy, node_path, result);
                 }
                 
             }
@@ -198,25 +202,25 @@ impl FileSystem{
     }
 
     //since root is know, check path
-    fn is_valid_path_recursive(child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, cursor:&mut usize, result: &mut bool) -> (){
+    fn is_valid_path_recursive(child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, cursor:&mut usize, result: &mut bool, deep: &mut usize) -> (){
 
         let mut copy = child_iter.clone();
         for node in child_iter{
             match node {
     
                 Node::Dir(d) => {
+                    *deep += 1 ;
                     if *cursor < node_path.len(){
                     if d.name != node_path.get(*cursor).unwrap().to_string(){
                         *result  = false;
                 } else {
                         *cursor += 1;
                         *result = true;
-                        FileSystem::is_valid_path_recursive(&mut d.children.iter(), node_path, cursor, result);
+                        FileSystem::is_valid_path_recursive(&mut d.children.iter(), node_path, cursor, result, deep);
             }
                     }
             },
                 Node::File(f) => {
-                    //FileSystem::is_valid_path_recursive(&mut copy, node_path, cursor, result);
                 }
                 
             }    
@@ -230,9 +234,10 @@ impl FileSystem{
         let mut node_path: Vec::<&str> = path.split('/').collect();
         let mut result = false;
         let mut cursor: usize = 0;
+        let mut deep: usize = 0;
         if node_path.get(0).unwrap().to_string() == self.root.name{
             cursor = 1;
-            FileSystem::is_valid_path_recursive(&mut self.root.children.iter(), &mut node_path, &mut cursor, &mut result);
+            FileSystem::is_valid_path_recursive(&mut self.root.children.iter(), &mut node_path, &mut cursor, &mut result, &mut deep);
         } else{
             FileSystem::check_for_valid_path(&mut self.root.children.iter(), &mut node_path, &mut result);
         }
@@ -256,7 +261,7 @@ fn main() {
   let path = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/parent_folder";
   let file_system =  FileSystem::from_dir(path);
   println!("{:?}", file_system);
-  let result = file_system.is_path_valid("child_folder/child_of_child_folder/ko");
+  let result = file_system.is_path_valid("child_folder/child_of_child_folder");
   println!("{}",result);
   //FileSystem::mk_dir();
 }
