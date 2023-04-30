@@ -176,7 +176,6 @@ impl FileSystem{
 
     // search root
     fn check_for_valid_path (child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, result:&mut bool, cursor: &mut usize, deep: &mut usize) -> (){
-        let mut copy = child_iter.clone();
         for node in child_iter{
             match node {
     
@@ -203,7 +202,6 @@ impl FileSystem{
     //since root is know, check path
     fn is_valid_path_recursive(child_iter: &mut Iter<Node>, node_path: &mut Vec::<&str>, cursor:&mut usize, result: &mut bool, deep: &mut usize) -> (){
 
-        let mut copy = child_iter.clone();
         for node in child_iter{
             match node {
     
