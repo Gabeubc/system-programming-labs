@@ -92,13 +92,27 @@ impl CircularBufferSensorDataWrite{
         l_len: 0,
         l_pid: Pid::this().as_raw()
     };
+        
+        while is_file_locked(&file, Some(lock)).unwrap(){};
         match lock_file(&file,  Some(lock), Some(FcntlLockType::Write) ){
             Ok(true) => println!("Write lock acquired"),
             Ok(false) => println!("Could'nt acquire write lock"),
             Err(err) => println!("Write acquisition fail")
             }
-
-        match is_file_locked(&file, Some(lock) ){
+            unsafe{
+                let mut circular_buffer_size = std::mem::size_of::<CircularBufferSensorDataWrite>();
+                self.push_into_vec_buffer(some_sensor_data);
+                let mut slice_u8_from_self: &mut [u8] = std::slice::from_raw_parts_mut(self as *mut CircularBufferSensorDataWrite as *mut u8,
+                    circular_buffer_size);
+                    file.write_all(slice_u8_from_self).unwrap();
+            }
+              
+        match unlock_file(&file, Some(lock)) {
+            Ok(true) => println!("Lock successfully released"),
+            Ok(false) => println!("Falied to release lock"),
+            Err(err) => println!("Error: {:?}", err),
+           }
+       /*match is_file_locked(&file, Some(lock) ){
 
             Ok(false) => 
             unsafe{
@@ -114,13 +128,8 @@ impl CircularBufferSensorDataWrite{
 
             Err(err) => print!("Control on lock for write fail")
             
-        }
-            
-        match unlock_file(&file, Some(lock)) {
-         Ok(true) => println!("Lock successfully released"),
-         Ok(false) => println!("Falied to release lock"),
-         Err(err) => println!("Error: {:?}", err),
-        }
+        }*/
+          
     }
 
 }
@@ -144,13 +153,44 @@ impl CircularBufferSensorDataRead{
         l_len: 0,
         l_pid: Pid::this().as_raw()
     };
+
+        while is_file_locked(&file, Some(lock)).unwrap() {};
          match lock_file(&file,  Some(lock), Some(FcntlLockType::Read)){
             Ok(true) => println!("Read lock acquired"),
             Ok(false) => println!("Could'nt acquire lock"),
             Err(err) => println!("Acquisition fail")
         }
+        unsafe{
+                
+            let mut circular_buffer_size: usize = usize::default();
+            let mut slice_u8_from_self: &mut [u8] = Default::default();
+            let mut index = usize::default();
+            self.vec_buffer.clear();
+            circular_buffer_size = std::mem::size_of::<usize>();
+            slice_u8_from_self = std::slice::from_raw_parts_mut(index.to_le_bytes().as_mut_ptr().cast() as *mut u8,
+            circular_buffer_size);
+            file.read_exact(slice_u8_from_self).unwrap();
+            self.index = slice_u8_from_self[0].try_into().unwrap();
+            for i in 0..CIRCULAR_BUFFER_LEN{
+                if i < self.index{
+                    
+                    circular_buffer_size = std::mem::size_of::<SensorData>();
+                    slice_u8_from_self = std::slice::from_raw_parts_mut(&mut sensor_data as *mut SensorData as *mut u8,
+                circular_buffer_size);
+                    file.read_exact(slice_u8_from_self).unwrap();
+                    self.vec_buffer.push(sensor_data);
+                }
+            }
+            println!("{:?}",self);
+    }
+    match unlock_file(&file, Some(lock)) {
 
-        match is_file_locked(&file, Some(lock)) {
+    Ok(true) => println!("Lock successfully released"),
+    Ok(false) => println!("Falied to release lock"),
+    Err(err) => println!("Error: {:?}", err),
+    
+    }
+     /*   match is_file_locked(&file, Some(lock)) {
 
             Ok(false) => unsafe{
                 
@@ -180,14 +220,7 @@ impl CircularBufferSensorDataRead{
 
         Err(err) => print!("Control on lock for read fail")
             
-        }
-        match unlock_file(&file, Some(lock)) {
-
-        Ok(true) => println!("Lock successfully released"),
-        Ok(false) => println!("Falied to release lock"),
-        Err(err) => println!("Error: {:?}", err),
-        
-        }
+        }*/
         self
 
     }
