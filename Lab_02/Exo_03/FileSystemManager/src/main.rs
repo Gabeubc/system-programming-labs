@@ -8,7 +8,8 @@ use std::{
     ops::{Add, Deref, DerefMut},
     os::windows::prelude::MetadataExt,
     path::Path,
-    slice::Iter, ptr::drop_in_place,
+    ptr::drop_in_place,
+    slice::Iter,
 };
 
 #[derive(Debug)]
@@ -154,11 +155,16 @@ impl FileSystem {
 
         file_system
     }
-/* 
-    fn mk_dir(path: &str) -> Dir {
+
+    fn mk_dir_on_resource(path: &str) -> (){
         let mut dir = Dir::default();
         let mut dir_builder = DirBuilder::new().create(path);
-        let mut tmp_path = String::default();
+    }
+
+    fn rm_dir_on_resource(path: &str) -> () {
+        let mut dir = Dir::default();
+        let mut dir_builder = DirBuilder::new().create(path);
+       /* let mut tmp_path = String::default();
         match dir_builder {
             Ok(ok) => {
                 dir.name = path.split('/').last().unwrap().to_string();
@@ -168,18 +174,11 @@ impl FileSystem {
                 let mut vec_node_path: Vec<&str> = path.split('/').collect();
                 vec_node_path.iter().for_each(|x| {
                     tmp_path.push_str(x);
-                    /*println!("{}", tmp_path);
-                    match Path::new(tmp_path.as_str()).is_dir() {
-                        true => print!(""),
-                        false => panic!("{} is an invalid path", tmp_path),
-                    }*/
                     tmp_path.push('/');
                 });
             }
-        }
-        dir
+        }*/
     }
-    */
 
     // search root
     fn check_for_valid_path(
@@ -203,34 +202,36 @@ impl FileSystem {
                         );
                     } else {
                         *cursor = 1;
-                        let mut sub_dirs_names= Vec::<String>::new();
-                        d.children.iter().for_each(
-                            |x| match x {
-                                Node::Dir(d) => sub_dirs_names.push(d.name.clone()),
-                                Node::File(f) => {}
-                            }
-                        );
-                        // handle option 2 with path <=2
-                        if option == 2 && sub_dirs_names.contains(&node_path.last().unwrap().to_string()) && node_path.len() == 2{
-                            let mut index = -1;
-                            d.children.iter().enumerate().for_each(|(i, x)|
-                        match x {
-                            Node::Dir(d) => {
-                                if d.name == node_path.last().unwrap().to_string() && d.children.is_empty(){
-                                    index = i as i32;
-                                    *result = true;
-                                }
-                            },
+                        let mut sub_dirs_names = Vec::<String>::new();
+                        d.children.iter().for_each(|x| match x {
+                            Node::Dir(d) => sub_dirs_names.push(d.name.clone()),
                             Node::File(f) => {}
-                            
+                        });
+                        // handle option 2 with path <=2
+                        if option == 2
+                            && sub_dirs_names.contains(&node_path.last().unwrap().to_string())
+                        {
+                            if node_path.len() == 2 {
+                                let mut index = -1;
+                                d.children.iter().enumerate().for_each(|(i, x)| match x {
+                                    Node::Dir(d) => {
+                                        if d.name == node_path.last().unwrap().to_string()
+                                            && d.children.is_empty()
+                                        {
+                                            index = i as i32;
+                                            *result = true;
+                                        }
+                                    }
+                                    Node::File(f) => {}
+                                });
+
+                                if index >= 0 {
+                                    d.children.remove(index as usize);
+                                    flag = true;
+                                }
+                            };
                         }
-                        );
-                        if index >= 0{
-                            d.children.remove(index as usize);
-                        }
-                        flag = true;
-                        }
-                        if flag != true{
+                        if flag != true {
                             FileSystem::is_valid_path_recursive(
                                 &mut d.children,
                                 node_path,
@@ -240,9 +241,9 @@ impl FileSystem {
                                 option,
                             );
                         }
-                        
+
                         if *result != false {
-                            if node_path.len() > *cursor  {
+                            if node_path.len() > *cursor {
                                 *result = false;
                             } else if node_path.len() == *cursor {
                                 *result = true;
@@ -267,57 +268,56 @@ impl FileSystem {
         for node in child_iter {
             match node {
                 Node::Dir(d) => {
-
                     if *cursor < node_path.len() {
-                        if !sub_dir_names.contains(&node_path.get(*cursor).unwrap().to_string()) {
+                        if !sub_dir_names.contains(&d.name) {
                             *result = false;
-                        } 
-                        else {
+                        } else {
                             match option {
-                                
                                 // mk_dir
                                 1 => {
-                                    if node_path.len() - 2 == *cursor && d.name == node_path.get(node_path.len() - 2).unwrap().to_string(){
+                                    if node_path.len() - 2 == *cursor
+                                        && d.name
+                                            == node_path
+                                                .get(node_path.len() - 2)
+                                                .unwrap()
+                                                .to_string()
+                                    {
                                         let mut new_dir = Dir::default();
-                                        new_dir.name = node_path.get(*cursor + 1).unwrap().to_string();
+                                        new_dir.name = node_path.last().unwrap().to_string();
                                         d.children.push(Node::Dir(new_dir));
                                         *result = true;
                                     }
                                 }
                                 // rm_dir
                                 2 => {
-                                    if *cursor == node_path.len() -2 {
+                                    if *cursor == node_path.len() - 2 {
                                         let mut index = -1;
-                            d.children.iter().enumerate().for_each(|(i, x)|
-                        match x {
-                            Node::Dir(d) => {
-                                if d.name == node_path.last().unwrap().to_string(){
-                                    index = i as i32;
-                                    *result = true;
-                                }
-                            },
-                            Node::File(f) => {}
-                            
-                        }
-                        );
-                        d.children.remove(index as usize);
-                                    }  
-
+                                        d.children.iter().enumerate().for_each(|(i, x)| match x {
+                                            Node::Dir(d) => {
+                                                if d.name == node_path.last().unwrap().to_string() {
+                                                    index = i as i32;
+                                                }
+                                            }
+                                            Node::File(f) => {}
+                                        });
+                                        if index >= 0 {
+                                            d.children.remove(index as usize);
+                                            *result = true;
+                                        }
+                                    }
                                 }
 
                                 _ => {}
                             }
                         }
                     }
-                    
+
                     *cursor += 1;
-                    sub_dir_names.clear();
-                    d.children.iter().for_each(
-                        |x| match x {
-                            Node::Dir(d) => sub_dir_names.push(d.name.clone()),
-                            Node::File(f) => {}
-                        }
-                    );
+                    // sub_dir_names.clear();
+                    d.children.iter().for_each(|x| match x {
+                        Node::Dir(d) => sub_dir_names.push(d.name.clone()),
+                        Node::File(f) => {}
+                    });
                     FileSystem::is_valid_path_recursive(
                         &mut d.children,
                         node_path,
@@ -326,10 +326,12 @@ impl FileSystem {
                         result,
                         option,
                     );
-                    
                 }
                 Node::File(f) => {}
             }
+        }
+        if *cursor > 0 {
+            *cursor -= 1;
         }
     }
 
@@ -338,27 +340,69 @@ impl FileSystem {
         let mut sub_dir_names = Vec::<String>::new();
         let mut result = true;
         let mut cursor: usize = 0;
+        if node_path.contains(&self.root.name.as_str()) {
+            node_path.remove(0);
+        }
         if node_path.len() == 0 {
             return true;
         }
-        if node_path.get(0).unwrap().to_string() == self.root.name {
-            cursor = 1;
-            FileSystem::is_valid_path_recursive(
-                &mut self.root.children,
-                &mut node_path,
-                &mut sub_dir_names,
-                &mut cursor,
-                &mut result,
-                option,
-            );
-        } else {
-            FileSystem::check_for_valid_path(
-                &mut self.root.children,
-                &mut node_path,
-                &mut result,
-                &mut cursor,
-                option,
-            );
+        if node_path.len() == 1 {
+            match option {
+                1 => {
+                    let mut new_dir = Dir::default();
+                    new_dir.name = node_path.last().unwrap().to_string();
+                    self.root.children.push(Node::Dir(new_dir));
+                    let mut base_path = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/".to_owned();
+                    base_path = base_path + self.root.name.as_str();
+                    base_path = base_path + "/";
+                    base_path = base_path + node_path.last().unwrap();
+                    FileSystem::mk_dir_on_resource(base_path.as_str());
+                    return true;
+                }
+                2 => {
+                    let mut index = -1;
+                    self.root
+                        .children
+                        .iter()
+                        .enumerate()
+                        .for_each(|(i, x)| match x {
+                            Node::Dir(d) => {
+                                if d.name == node_path.last().unwrap().to_string() {
+                                    index = i as i32;
+                                }
+                            }
+                            Node::File(f) => {}
+                        });
+                    if index >= 0 {
+                        self.root.children.remove(index as usize);
+                        return true;
+                    }
+                }
+                _ => {}
+            }
+            return true;
+        }
+        let mut sub_dirs_names = Vec::<String>::new();
+        self.root.children.iter().for_each(|x| match x {
+            Node::Dir(d) => sub_dirs_names.push(d.name.clone()),
+            Node::File(f) => {}
+        });
+
+        FileSystem::is_valid_path_recursive(
+            &mut self.root.children,
+            &mut node_path,
+            &mut sub_dirs_names,
+            &mut cursor,
+            &mut result,
+            option,
+        );
+
+        if result != false {
+            if node_path.len() > cursor {
+                result = false;
+            } else if node_path.len() == cursor {
+                result = true;
+            }
         }
 
         return result;
@@ -367,14 +411,14 @@ impl FileSystem {
     fn rm_dir(&mut self, path: &str) -> () {
         self.is_path_valid(path, 2);
         println!("***********rm_dir****************");
-        println!("dir {} have been removed",path);
+        println!("dir {} have been removed", path);
         println!("***********rm_dir end****************");
     }
 
-    fn mk_dir(&mut self, path:&str) -> (){
+    fn mk_dir(&mut self, path: &str) -> () {
         self.is_path_valid(path, 1);
         println!("***********mk_dir****************");
-        println!("dir {} have been added",path);
+        println!("dir {} have been added", path);
         println!("***********mk_dir end****************");
     }
 }
@@ -387,7 +431,9 @@ fn main() {
     println!("***********File System Copy****************");
     //let result = file_system.is_path_valid("child_folder/empty_child_folder", 2);
     /*println!("{}", result);*/
-    file_system.rm_dir("child_folder/empty_child_folder");
+    //file_system.rm_dir("child_folder/empty_child_folder");
+    // control special character before accpeting mkdir
+    file_system.mk_dir("parent_folder/ok");
     println!("***********File System Copy****************");
     println!("{:?}", file_system);
     println!("***********File System Copy****************");
