@@ -174,8 +174,17 @@ impl FileSystem {
             .open(path);
     }
 
+    fn get_file_from_resource(path: &str) -> std::fs::File {
+        let mut file = std::fs::File::options()
+            .read(true)
+            .write(true)
+            .open(path)
+            .unwrap();
+        file
+    }
+
     //since root is know, check path
-    fn is_valid_path_recursive(
+    fn option_parser_recursive(
         child_iter: &mut Vec<Node>,
         node_path: &mut Vec<&str>,
         root_path: &str,
@@ -202,15 +211,15 @@ impl FileSystem {
                                                 .to_string()
                                     {
                                         let mut new_dir = Dir::default();
-                                        let mut flag = false;
+                                        let mut flag = true;
                                         new_dir.name = node_path.last().unwrap().to_string();
                                         d.children.iter().for_each(|x| match x {
-                                            Node::Dir(d) => {}
-                                            Node::File(f) => {
-                                                if f.name == new_dir.name {
+                                            Node::Dir(d) => {
+                                                if d.name == new_dir.name {
                                                     flag = false;
                                                 }
                                             }
+                                            Node::File(f) => {}
                                         });
                                         if flag {
                                             d.children.push(Node::Dir(new_dir));
@@ -219,9 +228,6 @@ impl FileSystem {
                                         } else {
                                             *result = false;
                                         }
-                                        *result = true;
-                                    } else {
-                                        *result = false;
                                     }
                                 }
                                 // rm_dir
@@ -241,8 +247,6 @@ impl FileSystem {
                                             FileSystem::rm_dir_on_resource(&root_path);
                                             *result = true;
                                         }
-                                    } else {
-                                        *result = false;
                                     }
                                 }
 
@@ -306,7 +310,7 @@ impl FileSystem {
                         Node::Dir(d) => sub_dir_names.push(d.name.clone()),
                         Node::File(f) => {}
                     });
-                    FileSystem::is_valid_path_recursive(
+                    FileSystem::option_parser_recursive(
                         &mut d.children,
                         node_path,
                         root_path,
@@ -316,7 +320,14 @@ impl FileSystem {
                         option,
                     );
                 }
-                Node::File(f) => {}
+                Node::File(f) => {
+                    if f.name == node_path.get(*cursor).unwrap().to_string()
+                        && *cursor == node_path.len() - 1
+                        && option == 0
+                    {
+                        *result = true;
+                    }
+                }
             }
         }
         if *cursor > 0 {
@@ -327,18 +338,17 @@ impl FileSystem {
     fn is_path_valid(&mut self, path: &str, option: usize) -> bool {
         let mut node_path: Vec<&str> = path.split('/').collect();
         let mut sub_dir_names = Vec::<String>::new();
-        let mut result = true;
+        let mut result = false;
         let mut cursor: usize = 0;
         let mut root_name = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/".to_owned();
-        root_name = root_name + self.root.name.as_str();
-        root_name = root_name + "/";
+        /*sroot_name = root_name + self.root.name.as_str();
+        root_name = root_name + "/";*/
         if node_path.get(0).unwrap().to_string() != self.root.name {
             root_name = root_name + self.root.name.as_str();
             root_name = root_name + "/";
             root_name = root_name + path;
         } else {
-            let path_without_root = path.split_once(&self.root.name).unwrap();
-            root_name = root_name + path_without_root.1;
+            root_name = root_name + path;
         }
         if node_path.contains(&self.root.name.as_str()) {
             node_path.remove(0);
@@ -348,12 +358,45 @@ impl FileSystem {
         }
         if node_path.len() == 1 {
             match option {
+                0 => {
+                    let mut flag = false;
+                    let file_to_find = node_path.last().unwrap().to_string();
+                    self.root.children.iter().for_each(|x| match x {
+                        Node::Dir(d) => {}
+                        Node::File(f) => {
+                            if f.name == file_to_find {
+                                flag = true;
+                            }
+                        }
+                    });
+                    if flag {
+                        result = true;
+                    } else {
+                        result = false;
+                    }
+                    return result;
+                }
+
                 1 => {
                     let mut new_dir = Dir::default();
+                    let mut flag = true;
                     new_dir.name = node_path.last().unwrap().to_string();
-                    self.root.children.push(Node::Dir(new_dir));
-                    FileSystem::mk_dir_on_resource(&root_name);
-                    return true;
+                    self.root.children.iter().for_each(|x| match x {
+                        Node::Dir(d) => {
+                            if d.name == new_dir.name {
+                                flag = false;
+                            }
+                        }
+                        Node::File(f) => {}
+                    });
+                    if flag {
+                        self.root.children.push(Node::Dir(new_dir));
+                        FileSystem::mk_dir_on_resource(&root_name);
+                        result = true;
+                    } else {
+                        result = false;
+                    }
+                    return result;
                 }
                 2 => {
                     let mut index = -1;
@@ -372,16 +415,33 @@ impl FileSystem {
                     if index >= 0 {
                         self.root.children.remove(index as usize);
                         FileSystem::rm_dir_on_resource(&root_name);
-                        return true;
+                        result = true;
+                    } else {
+                        result = false;
                     }
+                    return result;
                 }
 
                 3 => {
                     let mut new_file = File::default();
+                    let mut flag = true;
                     new_file.name = node_path.last().unwrap().to_string();
-                    self.root.children.push(Node::File(new_file));
-                    FileSystem::mk_file_on_resource(&root_name);
-                    return true;
+                    self.root.children.iter().for_each(|x| match x {
+                        Node::Dir(d) => {}
+                        Node::File(f) => {
+                            if f.name == new_file.name {
+                                flag = false;
+                            }
+                        }
+                    });
+                    if flag {
+                        self.root.children.push(Node::File(new_file));
+                        FileSystem::mk_file_on_resource(&root_name);
+                        result = true;
+                    } else {
+                        result = false;
+                    }
+                    return result;
                 }
                 _ => {
                     return false;
@@ -404,8 +464,11 @@ impl FileSystem {
                     if index >= 0 {
                         self.root.children.remove(index as usize);
                         FileSystem::rm_file_on_resource(&root_name);
-                        return true;
+                        result = true;
+                    } else {
+                        result = false;
                     }
+                    return result;
                 }
             }
         }
@@ -416,7 +479,7 @@ impl FileSystem {
             Node::File(f) => {}
         });
 
-        FileSystem::is_valid_path_recursive(
+        FileSystem::option_parser_recursive(
             &mut self.root.children,
             &mut node_path,
             &root_name,
@@ -430,10 +493,16 @@ impl FileSystem {
     }
 
     fn rm_dir(&mut self, path: &str) -> () {
-        self.is_path_valid(path, 2);
-        println!("***********rm_dir****************");
-        println!("dir {} have been removed", path);
-        println!("***********rm_dir end****************");
+        let result = self.is_path_valid(path, 2);
+        if result == true {
+            println!("***********rm_dir****************");
+            println!("dir {} have been removed", path);
+            println!("***********rm_dir end****************");
+        } else {
+            println!("***********rm_dir****************");
+            println!("fail");
+            println!("***********rm_dir end****************");
+        }
     }
 
     fn mk_dir(&mut self, path: &str) -> () {
@@ -474,21 +543,44 @@ impl FileSystem {
             println!("***********rm_file end****************");
         }
     }
+
+    fn get_file(&mut self, path: &str) -> std::fs::File {
+        let mut node_path: Vec<&str> = path.split('/').collect();
+        let mut root_name = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/".to_owned();
+        if node_path.get(0).unwrap().to_string() != self.root.name {
+            root_name = root_name + self.root.name.as_str();
+            root_name = root_name + "/";
+            root_name = root_name + path;
+        } else {
+            root_name = root_name + path;
+        }
+        if self.is_path_valid(path, 0) {
+            std::fs::File::options()
+                .write(true)
+                .read(true)
+                .open(root_name)
+                .unwrap()
+        } else {
+            std::fs::File::options()
+                .write(true)
+                .read(true)
+                .open("")
+                .unwrap()
+        }
+    }
 }
 
 fn main() {
     let path = "C:/Users/youbi/Desktop/Process/Polito/Laurea-Magistrale/first year/Programmazione di Sistema/system-programming-labs/Lab_02/Exo_03/FileSystemManager/src/resources/parent_folder";
     let mut file_system = FileSystem::from_dir(path);
+    //println!("***********File System Copy****************");
+   // println!("{:?}", file_system);
+   // println!("***********File System Copy****************");
+    file_system.mk_dir("parent_folder/child_folder/okokok");
+   // file_system.mk_file("parent_folder/child_folder/okok/file.txt");
+    file_system.rm_dir("parent_folder/child_folder/okokok");
     println!("***********File System Copy****************");
     println!("{:?}", file_system);
     println!("***********File System Copy****************");
-    //let result = file_system.is_path_valid("child_folder/empty_child_folder", 2);
-    /*println!("{}", result);*/
-    //file_system.rm_dir("parent_folder/child_folder/okok");
-    // control special character before accpeting mkdir
-    file_system.mk_dir("parent_folder/child_folder/okok");
-    file_system.mk_file("parent_folder/child_folder/okok/file.txt");
-    println!("***********File System Copy****************");
-    println!("{:?}", file_system);
-    println!("***********File System Copy****************");
+    file_system.get_file("file_txt.txt");
 }
